@@ -21,6 +21,7 @@
   "homepage": "https://github.com/Celestz/dalek-primer",
   "devDependencies": {
     "dalek-browser-chrome": "0.0.11",
+    "dalek-reporter-html": "0.0.4",
     "dalekjs": "0.0.9"
   }
 }
