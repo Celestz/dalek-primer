@@ -3,9 +3,9 @@ module.exports = {
   test
     .open('http://www.amazon.com/')
     .type('#twotabsearchtextbox', 'Blues Brothers VHS')
-    .click('.nav-submit-input')
+    .click('.nav-input')
     .waitForElement('#result_0')
-    .assert.text('#result_0 .newaps a span').is('The Blues Brothers')
+    .assert.text('#result_0 h2.a-size-medium').is('The Blues Brothers')
     .done();
 }
 };
