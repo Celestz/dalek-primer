@@ -1,8 +1,9 @@
 module.exports = {
-  'Pure Cambogia Ultra - User Fills the Form and Gets Transferred to Checkout': function(test) {
+  'Pure Cambogia Ultra - Full Flow Testing': function(test) {
     test
       .open('http://open:nutra@katm.us/adshore/feature/thepurecambogiaultra.com/sea')
       .assert.title('Pure Cambogia Ultra', 'Page Loaded as Expected')
+      .wait(2000) //Let GeoIP kick in
       .type('input[name="first_name"]', 'Patrick')
       .type('input[name="last_name"]', 'Chua')
       .type('input[name="address"]', 'Address 1')
@@ -15,7 +16,7 @@ module.exports = {
       .waitForElement('.checkout-form')
       .wait(1000) //Medyo Dirty
       // Should be on /checkout now
-      .assert.url().to.contain('checkout')
+      .assert.url().to.contain('checkout','Main Product Selection Page')
       //Select Single Bottle Package
       .click('.boxes.box3')
       //Fill Out Payment Form
@@ -29,20 +30,20 @@ module.exports = {
       .submit('form[name="f"]')
       .wait(2000) //Medyo Dirty Talaga!
       // Should be on /checkout now
-      .assert.url().to.contain('upsell')
+      .assert.url().to.contain('upsell','Upsell Yacon')
       //Click add to upsell
       .click('.yes-send')
       .wait(2000) //I keep Repeating myself
       //Should be in upsell1 now
-      .assert.url().to.contain('upsell1')
+      .assert.url().to.contain('upsell1','Upsell GCE')
       //Add GCE
       .click('#order .btn-select')
       .wait(2000) //Umu.
       //Should be in upsell2 now
-      .assert.url().to.contain('upsell2')
+      .assert.url().to.contain('upsell2','Upsell Cleanse')
       .click('.box.set3 .btn-select')
       .wait(2000) //Umu.
-      .assert.url().to.contain('upsell3')
+      .assert.url().to.contain('upsell3','Upsell AUL')
       .click('.add-btn')
       .wait(2000)
       .assert.url().to.contain('confirm')
